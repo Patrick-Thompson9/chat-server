@@ -26,4 +26,13 @@ impl ChannelManager {
             sender_vec.retain(|s| s as *const _ != &sender as *const _);
         }
     }
+
+    async fn broadcast(&self, channel_name: String, message: Message) {
+        let mut channels = self.channels.lock().await;
+        if let Some(senders) = channels.get_mut(&channel_name) {
+            for sender in senders {
+                sender.send(message.clone()).expect("Failed to send msg");
+            }
+        }
+    }
 }
