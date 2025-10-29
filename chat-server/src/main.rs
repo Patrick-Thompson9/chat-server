@@ -3,3 +3,4 @@ fn main() {
 }
 
 mod server;
+mod client;

@@ -4,7 +4,7 @@ use tokio::{
 };
 
 use tokio_tungstenite::{accept_async, tungstenite::Message};
-use std::{collections::HashMap, sync::Arc, net::SocketAddr};
+use std::{collections::HashMap, sync::Arc, net::SocketAddr, error::Error};
 use::futures::{
     stream::StreamExt,
     SinkExt
@@ -103,7 +103,7 @@ async fn handle_connection(
     println!("Web socket connection closed (Addr: {})", addr);
 }
 
-pub async fn start_server() -> Result<(), Box<dyn std::error::Error>> {
+pub async fn start_server() -> Result<(), Box<dyn Error>> {
     let listener = TcpListener::bind("127.0.0.1:8080").await?;
     println!("Listening on port 8080");
 
