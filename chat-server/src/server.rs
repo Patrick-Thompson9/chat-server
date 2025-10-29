@@ -1,6 +1,14 @@
-use tokio::sync::{mpsc, Mutex};
-use tokio_tungstenite::tungstenite::Message;
-use std::{collections::HashMap, sync::Arc};
+use tokio::{
+    net::{TcpListener, TcpStream},
+    sync::{mpsc, Mutex}
+};
+
+use tokio_tungstenite::{accept_async, tungstenite::Message};
+use std::{collections::HashMap, sync::Arc, net::SocketAddr};
+use::futures::{
+    stream::StreamExt,
+    SinkExt
+};
 
 type Sender = mpsc::UnboundedSender<Message>;
 
@@ -20,10 +28,17 @@ impl ChannelManager {
         }
     }
 
+    async fn add_sender_to_channel(&self, channel_name: String, sender: Sender) {
+        let mut channels = self.channels.lock().await;
+        if let Some(senders) = channels.get_mut(&channel_name) {
+            senders.push(sender);
+        }
+    }
+
     async fn remove_sender_from_channel(&self, channel_name: String, sender: Sender) {
         let mut channels = self.channels.lock().await;
-        if let Some(sender_vec) = channels.get_mut(&channel_name) {
-            sender_vec.retain(|s| s as *const _ != &sender as *const _);
+        if let Some(senders) = channels.get_mut(&channel_name) {
+            senders.retain(|s| s as *const _ != &sender as *const _);
         }
     }
 
@@ -33,6 +48,55 @@ impl ChannelManager {
             for sender in senders {
                 sender.send(message.clone()).expect("Failed to send msg");
             }
+        }
+    }
+}
+
+async fn handle_client(
+    stream: TcpStream,
+    addr: SocketAddr,
+    channel_manager: Arc<ChannelManager>,
+) {
+    let socket = accept_async(stream).await.expect("Error during web socket handshake");
+    println!("New Web Socket connected at addr: {}", addr);
+
+    let (mut write, mut read) = socket.split();
+    let (tx, mut rx) = mpsc::unbounded_channel();
+    let channel_manager = channel_manager.clone();
+
+    tokio::spawn(async move {
+        while let Some(msg) = rx.recv().await {
+            write.send(msg).await.expect("Failed to send message");
+        }
+    });
+
+    let mut current_channel = String::new();
+    while let Some(msg) = read.next().await {
+        match msg {
+            Ok(Message::Text(text)) => {
+                if text.starts_with("JOIN_ROOM:") {
+                    let room_name = &text[10..];
+                    channel_manager.get_or_create_channel(room_name.to_string()).await;
+                    channel_manager.add_sender_to_channel(room_name.to_string(), tx.clone()).await;
+                    current_channel = room_name.to_string();
+                } else if text.starts_with("LEAVE_ROOM:") {
+                    let room_name = &text[11..];
+                    channel_manager.remove_sender_from_channel(room_name.to_string(), tx.clone()).await;
+                    current_channel.clear();
+                } else if text.starts_with("ROOM_MSG:") {
+                    let parts: Vec<&str> = text[9..].splitn(3, ':').collect();
+                    if parts.len() == 3 {
+                        let room_name = parts[0];
+                        let username = parts[1];
+                        let message = parts[2];
+                        channel_manager.broadcast(room_name.to_string(), Message::Text(format!("{}: {}", username, message))).await;
+                    }
+                }
+            }
+            Ok(_) => {
+                // handle other msg types
+            }
+            Err(e) => eprint!("Error reading command: {}", e)
         }
     }
 }
