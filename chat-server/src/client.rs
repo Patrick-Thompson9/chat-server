@@ -48,6 +48,10 @@ pub async fn start_client() -> Result<(), Box<dyn Error>> {
     let mut username = String::new();
     io::stdin().read_line(&mut username)?;
     let username = username.trim().to_string();
+    if username.to_lowercase() == "neil" {
+        println!("You are not allowed");
+        return Ok(())
+    }
 
     println!("Do you want to create/join a room with JOIN <room name>");
 
