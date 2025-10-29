@@ -1,0 +1,1 @@
+C:\Users\patrick.thompson\Documents\GitHub\chat-server\chat-server\target\debug\chat-server.exe: C:\Users\patrick.thompson\Documents\GitHub\chat-server\chat-server\src\client.rs C:\Users\patrick.thompson\Documents\GitHub\chat-server\chat-server\src\main.rs C:\Users\patrick.thompson\Documents\GitHub\chat-server\chat-server\src\server.rs

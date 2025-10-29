@@ -49,7 +49,7 @@ pub async fn start_client() -> Result<(), Box<dyn Error>> {
     io::stdin().read_line(&mut username)?;
     let username = username.trim().to_string();
 
-    println!("Do you want to create/join a room with JOIN_ROOM:<room name>");
+    println!("Do you want to create/join a room with JOIN <room name>");
 
     let mut current_room = String::new();
 
@@ -73,11 +73,6 @@ pub async fn start_client() -> Result<(), Box<dyn Error>> {
             println!("-----------------------------------------------");
 
             break;
-        } else if input.starts_with("DELETE ") {
-            current_room = input[5..].to_string();
-            tx.send(Message::Text(format!("JOIN_ROOM: {}", current_room))).expect("Failed to join room");
-            println!("Joined room: {}", current_room);
-            break;
         } else {
             println!("Invalid command. Please type 'JOIN <room name>'.")
         }
@@ -85,7 +80,7 @@ pub async fn start_client() -> Result<(), Box<dyn Error>> {
 
     println!("You can now chat in room: {}", current_room);
     loop {
-        println!("{}> ", username);
+        println!("{} > ", username);
         io::stdout().flush()?;
         let mut message = String::new();
         io::stdin().read_line(&mut message)?;
