@@ -1,0 +1,9 @@
+C:\Users\patrick.thompson\Documents\GitHub\chat-server\chat-server\target\debug\deps\sha1-24582fc9fd67ae60.d: C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sha-1-0.9.8\src\lib.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sha-1-0.9.8\src\compress.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sha-1-0.9.8\src\consts.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sha-1-0.9.8\src\compress\soft.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sha-1-0.9.8\src\compress\x86.rs
+
+C:\Users\patrick.thompson\Documents\GitHub\chat-server\chat-server\target\debug\deps\libsha1-24582fc9fd67ae60.rmeta: C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sha-1-0.9.8\src\lib.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sha-1-0.9.8\src\compress.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sha-1-0.9.8\src\consts.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sha-1-0.9.8\src\compress\soft.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sha-1-0.9.8\src\compress\x86.rs
+
+C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sha-1-0.9.8\src\lib.rs:
+C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sha-1-0.9.8\src\compress.rs:
+C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sha-1-0.9.8\src\consts.rs:
+C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sha-1-0.9.8\src\compress\soft.rs:
+C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sha-1-0.9.8\src\compress\x86.rs:

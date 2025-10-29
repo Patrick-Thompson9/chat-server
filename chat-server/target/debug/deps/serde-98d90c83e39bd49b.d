@@ -1,0 +1,12 @@
+C:\Users\patrick.thompson\Documents\GitHub\chat-server\chat-server\target\debug\deps\serde-98d90c83e39bd49b.d: C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\lib.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\integer128.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\mod.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\de.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\ser.rs C:\Users\patrick.thompson\Documents\GitHub\chat-server\chat-server\target\debug\build\serde-2af93ab4ef0d713b\out/private.rs
+
+C:\Users\patrick.thompson\Documents\GitHub\chat-server\chat-server\target\debug\deps\libserde-98d90c83e39bd49b.rmeta: C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\lib.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\integer128.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\mod.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\de.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\ser.rs C:\Users\patrick.thompson\Documents\GitHub\chat-server\chat-server\target\debug\build\serde-2af93ab4ef0d713b\out/private.rs
+
+C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\lib.rs:
+C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\integer128.rs:
+C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\mod.rs:
+C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\de.rs:
+C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\ser.rs:
+C:\Users\patrick.thompson\Documents\GitHub\chat-server\chat-server\target\debug\build\serde-2af93ab4ef0d713b\out/private.rs:
+
+# env-dep:OUT_DIR=C:\\Users\\patrick.thompson\\Documents\\GitHub\\chat-server\\chat-server\\target\\debug\\build\\serde-2af93ab4ef0d713b\\out
