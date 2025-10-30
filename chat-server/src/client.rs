@@ -3,9 +3,12 @@ use tokio_tungstenite::{connect_async, tungstenite::Message};
 use futures::{stream::StreamExt, SinkExt};
 use std::{error::Error, io::{self, Write}, sync::Arc};
 
-pub async fn start_client() -> Result<(), Box<dyn Error>> {
-    let (stream, response) = connect_async("ws://127.0.0.1:8080").await?;
-    println!("Connected to Web socket server");
+pub async fn start_client(server_ip: Option<&str>) -> Result<(), Box<dyn Error>> {
+    let server_address = server_ip.unwrap_or("127.0.0.1");
+    let connection_string = format!("ws://{}:8080", server_address);
+    
+    let (stream, response) = connect_async(&connection_string).await?;
+    println!("Connected to WebSocket server at {}", server_address);
 
     let (mut write, mut read) = stream.split();
 

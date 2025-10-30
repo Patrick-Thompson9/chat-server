@@ -129,8 +129,8 @@ async fn handle_connection(
 }
 
 pub async fn start_server() -> Result<(), Box<dyn Error>> {
-    let listener = TcpListener::bind("127.0.0.1:8080").await?;
-    println!("Listening on port 8080");
+    let listener = TcpListener::bind("0.0.0.0:8080").await?;
+    println!("Server listening on all interfaces at port 8080");
 
     let channel_manager = Arc::new(ChannelManager::new());
 

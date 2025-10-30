@@ -3,8 +3,10 @@ use std::env;
 #[tokio::main]
 async fn main() {
     let args: Vec<String> = env::args().collect();
-    if args.len() != 2 {
-        eprintln!("Usage: cargo run -- <server or client>");
+    if args.len() < 2 {
+        eprintln!("Usage:");
+        eprintln!("  cargo run -- server");
+        eprintln!("  cargo run -- client [server_ip]");
         return;
     }
 
@@ -15,12 +17,18 @@ async fn main() {
             }
         }
         "client" => {
-            if let Err(e) = client::start_client().await {
+            let server_ip = if args.len() > 2 {
+                Some(args[2].as_str())
+            } else {
+                None
+            };
+            
+            if let Err(e) = client::start_client(server_ip).await {
                 eprintln!("Error starting client: {}", e)
             }
         }
         _ => {
-            eprintln!("Invalid argument");
+            eprintln!("Invalid argument. Use 'server' or 'client'");
         }
     }
 }
