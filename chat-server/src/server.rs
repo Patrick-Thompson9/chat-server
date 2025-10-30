@@ -66,6 +66,22 @@ impl ChannelManager {
     }
 }
 
+
+pub async fn start_server() -> Result<(), Box<dyn Error>> {
+    let listener = TcpListener::bind("0.0.0.0:8080").await?;
+    println!("Server listening on all interfaces at port 8080");
+
+    let channel_manager = Arc::new(ChannelManager::new());
+
+    while let Ok((stream, addr)) = listener.accept().await {
+        let channel_manager = channel_manager.clone();
+        tokio::spawn(async move {
+            handle_connection(stream, addr, channel_manager).await
+        });
+    }
+    Ok(())
+}
+
 async fn handle_connection(
     stream: TcpStream,
     addr: SocketAddr,
@@ -126,19 +142,4 @@ async fn handle_connection(
     }
 
     println!("Web socket connection closed (Addr: {})", addr);
-}
-
-pub async fn start_server() -> Result<(), Box<dyn Error>> {
-    let listener = TcpListener::bind("0.0.0.0:8080").await?;
-    println!("Server listening on all interfaces at port 8080");
-
-    let channel_manager = Arc::new(ChannelManager::new());
-
-    while let Ok((stream, addr)) = listener.accept().await {
-        let channel_manager = channel_manager.clone();
-        tokio::spawn(async move {
-            handle_connection(stream, addr, channel_manager).await
-        });
-    }
-    Ok(())
 }
