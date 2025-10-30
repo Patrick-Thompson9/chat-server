@@ -9,7 +9,7 @@ pub async fn start_client(server_ip: Option<&str>) -> Result<(), Box<dyn Error>>
     let server_address = server_ip.unwrap_or("127.0.0.1");
     let connection_string = format!("ws://{}:8080", server_address);
     
-    let (stream, response) = connect_async(&connection_string).await?;
+    let (stream, _response) = connect_async(&connection_string).await?;
     println!("Connected to WebSocket server at {}", server_address);
 
     let (mut write, mut read) = stream.split();
@@ -18,7 +18,7 @@ pub async fn start_client(server_ip: Option<&str>) -> Result<(), Box<dyn Error>>
     let message = Arc::new(Mutex::new(Vec::new()));
 
     tokio::spawn({
-        let message = message.clone();
+        let _message = message.clone();
         async move {
             while let Some(msg) = rx.recv().await {
                 write.send(msg).await.expect("Failed to send message to server");
@@ -119,7 +119,6 @@ pub async fn start_client(server_ip: Option<&str>) -> Result<(), Box<dyn Error>>
     }
     
     }
-
 
     Ok(())
 }
