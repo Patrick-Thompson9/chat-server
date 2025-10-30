@@ -35,8 +35,8 @@ pub async fn start_client(server_ip: Option<&str>) -> Result<(), Box<dyn Error>>
                         let mut msgs = message.lock().await;
 
                         if !text.starts_with("ROOM_MSG") {
-                            msgs.push(text.clone());
-                            println!("{}", text);
+                            msgs.push(text.clone());     
+                            println!("{}", text.cyan());
                         }
                     }
                     Ok(_) => {
@@ -90,8 +90,8 @@ pub async fn start_client(server_ip: Option<&str>) -> Result<(), Box<dyn Error>>
         if in_room {
             let chat_timer = Instant::now();
             println!("{}{}", "You can now chat in room: ".green().bold(), current_room);
+            println!("{} > ", username);
             'in_room: loop {
-                println!("{} > ", username);
                 io::stdout().flush()?;
                 let mut message = String::new();
                 io::stdin().read_line(&mut message)?;
