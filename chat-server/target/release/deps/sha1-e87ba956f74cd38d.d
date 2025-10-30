@@ -1,0 +1,10 @@
+C:\Users\patrick.thompson\Documents\GitHub\chat-server\chat-server\target\release\deps\sha1-e87ba956f74cd38d.d: C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sha-1-0.10.1\src\lib.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sha-1-0.10.1\src\compress.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sha-1-0.10.1\src\compress\soft.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sha-1-0.10.1\src\compress\x86.rs
+
+C:\Users\patrick.thompson\Documents\GitHub\chat-server\chat-server\target\release\deps\libsha1-e87ba956f74cd38d.rlib: C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sha-1-0.10.1\src\lib.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sha-1-0.10.1\src\compress.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sha-1-0.10.1\src\compress\soft.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sha-1-0.10.1\src\compress\x86.rs
+
+C:\Users\patrick.thompson\Documents\GitHub\chat-server\chat-server\target\release\deps\libsha1-e87ba956f74cd38d.rmeta: C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sha-1-0.10.1\src\lib.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sha-1-0.10.1\src\compress.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sha-1-0.10.1\src\compress\soft.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sha-1-0.10.1\src\compress\x86.rs
+
+C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sha-1-0.10.1\src\lib.rs:
+C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sha-1-0.10.1\src\compress.rs:
+C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sha-1-0.10.1\src\compress\soft.rs:
+C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\sha-1-0.10.1\src\compress\x86.rs:

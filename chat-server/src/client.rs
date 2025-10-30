@@ -2,6 +2,8 @@ use tokio::sync::{Mutex, mpsc};
 use tokio_tungstenite::{connect_async, tungstenite::Message};
 use futures::{stream::StreamExt, SinkExt};
 use std::{error::Error, io::{self, Write}, sync::Arc};
+use colored::*;
+use std::time::Instant;
 
 pub async fn start_client(server_ip: Option<&str>) -> Result<(), Box<dyn Error>> {
     let server_address = server_ip.unwrap_or("127.0.0.1");
@@ -19,7 +21,7 @@ pub async fn start_client(server_ip: Option<&str>) -> Result<(), Box<dyn Error>>
         let message = message.clone();
         async move {
             while let Some(msg) = rx.recv().await {
-                write.send(msg).await.expect("Failed to send message");
+                write.send(msg).await.expect("Failed to send message to server");
             }
         }
     });
@@ -51,16 +53,17 @@ pub async fn start_client(server_ip: Option<&str>) -> Result<(), Box<dyn Error>>
     let mut username = String::new();
     io::stdin().read_line(&mut username)?;
     let username = username.trim().to_string();
-    if username.to_lowercase() == "neil" {
-        println!("You are not allowed");
+    if username.to_lowercase().contains("neil") {
+        println!("{}", "Real Neil: Nice try...".magenta().bold());
+        println!("{}", "Real Neil: Get back to work!".magenta().bold());
+        println!("Disconnected from server");
         return Ok(())
     }
 
-    println!("Do you want to create/join a room with JOIN <room name>");
-
     let mut current_room = String::new();
-
-    loop {
+    let mut in_room = false;
+    'out_room: loop {
+        println!("Do you want to create/join a room with JOIN <room name>");
         println!("> ");
         io::stdout().flush()?;
         let mut input = String::new();
@@ -70,7 +73,7 @@ pub async fn start_client(server_ip: Option<&str>) -> Result<(), Box<dyn Error>>
         if input.starts_with("JOIN ") {
             current_room = input[5..].to_string();
             tx.send(Message::Text(format!("JOIN_ROOM:{}", current_room))).expect("Failed to join room");
-            println!("Joined room: {}", current_room);
+            println!("{}{}", "Joined room: ".green().bold(), current_room);
             
             let msgs = message.lock().await;
             println!("--- Previous Messages ---");
@@ -79,29 +82,44 @@ pub async fn start_client(server_ip: Option<&str>) -> Result<(), Box<dyn Error>>
             }
             println!("-----------------------------------------------");
 
-            break;
+            in_room = true;
         } else {
             println!("Invalid command. Please type 'JOIN <room name>'.")
         }
-    }
 
-    println!("You can now chat in room: {}", current_room);
-    loop {
-        println!("{} > ", username);
-        io::stdout().flush()?;
-        let mut message = String::new();
-        io::stdin().read_line(&mut message)?;
-        let message = message.trim();
-
-        if message == "/leave" {
-            tx.send(Message::Text(format!("LEAVE_ROOM: {}", current_room))).expect("Failed to send message");
-            println!("You have left room: {}", current_room);
-            break;
+        if in_room {
+            let chat_timer = Instant::now();
+            println!("{}{}", "You can now chat in room: ".green().bold(), current_room);
+            'in_room: loop {
+                println!("{} > ", username);
+                io::stdout().flush()?;
+                let mut message = String::new();
+                io::stdin().read_line(&mut message)?;
+                let message = message.trim();
+        
+                if message == "/leave" {
+                    tx.send(Message::Text(format!("LEAVE_ROOM: {}", current_room))).expect("Failed to send message");
+                    println!("{}{}", "You have left room: ".red().bold(), current_room);
+                    break 'in_room;
+                }
+        
+                tx.send(Message::Text(format!("ROOM_MSG:{}:{}:{}", current_room, username, message))).
+                expect("Failed to send message");
+        
+                if chat_timer.elapsed().as_secs() > 30 {
+                    println!("{}", "Neil: Get back to work!".magenta().bold());
+                    println!("Disconnected from chat room: {}", current_room);
+                    break 'in_room;
+                }
         }
-
-        tx.send(Message::Text(format!("ROOM_MSG:{}:{}:{}", current_room, username, message))).
-        expect("Failed to send message");
     }
+    if input == "QUIT" {
+        println!("{}", "Quitting app".red().bold());
+        break 'out_room;
+    }
+    
+    }
+
 
     Ok(())
 }

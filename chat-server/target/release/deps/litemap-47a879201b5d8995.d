@@ -1,0 +1,10 @@
+C:\Users\patrick.thompson\Documents\GitHub\chat-server\chat-server\target\release\deps\litemap-47a879201b5d8995.d: C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\litemap-0.8.1\src\lib.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\litemap-0.8.1\src\map.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\litemap-0.8.1\src\store\mod.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\litemap-0.8.1\src\store\slice_impl.rs
+
+C:\Users\patrick.thompson\Documents\GitHub\chat-server\chat-server\target\release\deps\liblitemap-47a879201b5d8995.rlib: C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\litemap-0.8.1\src\lib.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\litemap-0.8.1\src\map.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\litemap-0.8.1\src\store\mod.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\litemap-0.8.1\src\store\slice_impl.rs
+
+C:\Users\patrick.thompson\Documents\GitHub\chat-server\chat-server\target\release\deps\liblitemap-47a879201b5d8995.rmeta: C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\litemap-0.8.1\src\lib.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\litemap-0.8.1\src\map.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\litemap-0.8.1\src\store\mod.rs C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\litemap-0.8.1\src\store\slice_impl.rs
+
+C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\litemap-0.8.1\src\lib.rs:
+C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\litemap-0.8.1\src\map.rs:
+C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\litemap-0.8.1\src\store\mod.rs:
+C:\Users\patrick.thompson\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\litemap-0.8.1\src\store\slice_impl.rs:
